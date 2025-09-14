@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Conversor de Caixa Alta",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Converte texto selecionado ou inserido para letras maiúsculas.",
   "icons": {
     "16": "src/assets/icon.png",
