@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Conversor de Caixa Alta",
+  "version": "1.0.0",
+  "description": "Converte texto selecionado ou inserido para letras maiúsculas.",
+  "icons": {
+    "16": "src/assets/icon.png",
+    "32": "src/assets/icon.png",
+    "48": "src/assets/icon.png",
+    "128": "src/assets/icon.png"
+  },
+  "action": {
+    "default_title": "Conversor de Caixa Alta",
+    "default_popup": "src/popup/popup.html",
+    "defaut_icon": {
+       "16": "src/assets/icon.png",
+        "32": "src/assets/icon.png",
+        "48": "src/assets/icon.png",
+        "128": "src/assets/icon.png" 
+    }
+  },
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "permissions": [
+    "contextMenus",
+    "clipboardWrite",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://developer.chrome.com/*"],
+      "js": ["src/content/content.js"]
+    }
+  ]
+}
