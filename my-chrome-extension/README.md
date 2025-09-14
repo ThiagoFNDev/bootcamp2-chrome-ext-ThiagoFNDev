@@ -13,7 +13,7 @@ Uma extensão simples para Google Chrome (Manifest V3) que converte qualquer tex
 
 ## 🛠️ Instalação (Desenvolvimento)
 
-1.  Clone este repositório: `git clone https://github.com/SEU_USUARIO/conversor-caixa-alta-chrome.git`
+1.  Clone este repositório: `git clone https://github.com/ThiagoFNDev/bootcamp2-chrome-ext-ThiagoFNDev`
 2.  Abra o Google Chrome e acesse `chrome://extensions`.
 3.  Ative o **"Modo de Desenvolvedor"**.
 4.  Clique em **"Carregar sem compactação"**.
