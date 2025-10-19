@@ -3,6 +3,7 @@
   "version": "1.5.1",
   "description": "",
   "scripts": {
+    "playwright:install": "npx playwright install",
     "build": "node my-chrome-extension/scripts/build-extensions.mjs",
     "test:e2e": "npx playwright test --config=my-chrome-extension/playwright.config.ts",
     "test": "npm run build && npm run test:e2e"

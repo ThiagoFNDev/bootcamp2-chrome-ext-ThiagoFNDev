@@ -32,7 +32,7 @@ jobs:
           fi
 
       # 4️⃣ Instalar Playwright e dependências do sistema
-      - name: Instalar Playwright (Chromium + deps)
+      - name: Instalar Playwright + libs do Chromium
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -46,16 +46,18 @@ jobs:
             libxrandr2 \
             libasound2-plugins \
             fonts-liberation \
-            libpangocairo-1.0-0
+            libpangocairo-1.0-0 \
+            xvfb
           npx playwright install --with-deps chromium
 
       # 5️⃣ Build da extensão
       - name: Build extensão
         run: npm run build
 
-      # 6️⃣ Testes E2E com Chromium headful + extensão
+      # 6️⃣ Testes E2E com Chromium headless + extensão
       - name: Teste E2E
-        run: xvfb-run -a -s "-screen 0 1920x1080x24" npx playwright test --config=my-chrome-extension/playwright.config.ts
+        run: npx playwright test --config=my-chrome-extension/playwright.config.ts
+        timeout-minutes: 10
 
       # 7️⃣ Publicar relatório HTML do Playwright
       - name: Publicar relatório HTML do Teste
