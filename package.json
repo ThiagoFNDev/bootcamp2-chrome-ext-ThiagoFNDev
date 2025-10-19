@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "node my-chrome-extension/scripts/build-extensions.mjs",
-    "test:e2e": "cd my-chrome-extension && npx playwright test",
+    "test:e2e": "npx playwright test --config=my-chrome-extension/playwright.config.ts",
     "test": "npm run build && npm run test:e2e"
   },
   "repository": {
