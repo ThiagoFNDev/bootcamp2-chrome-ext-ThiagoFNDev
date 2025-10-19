@@ -1,0 +1,14 @@
+services:
+  e2e:
+    build:
+      context: ..
+      dockerfile: my-chrome-extension/Dockerfile
+    image: bootcamp/ext-e2e:latest
+    environment:
+      - CI=true
+    volumes:
+      - ./my-chrome-extension:/app
+      - /pp/node_modules
+    working_dir: /app
+    command: npm test
+    shm_size: 2gb
