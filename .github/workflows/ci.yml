@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Fazer checkout do código
+      # 1️⃣ Checkout do código
       - uses: actions/checkout@v4
 
-      # 2️⃣ Configurar Node.js e cache do npm
+      # 2️⃣ Configurar Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -30,33 +30,29 @@ jobs:
           else
             npm install
           fi
-        working-directory: ./my-chrome-extension
 
-      # 4️⃣ Instalar Playwright (Chromium + dependências do sistema)
+      # 4️⃣ Instalar Playwright
       - name: Instalar Playwright (Chromium + deps)
         run: |
           sudo apt-get update
           sudo apt-get install -y libnss3 libxss1 libasound2 libatk1.0-0 libgtk-3-0 libdrm2 libx11-xcb1
           npx playwright install --with-deps chromium
-        working-directory: ./my-chrome-extension
 
       # 5️⃣ Build da extensão
       - name: Build extensão
         run: npm run build
-        working-directory: ./my-chrome-extension
 
       # 6️⃣ Testes E2E
       - name: Teste E2E
         run: xvfb-run -a npm run test:e2e
-        working-directory: ./my-chrome-extension
 
       # 7️⃣ Publicar relatório HTML do Playwright
-      - name: Publicar o relatório HTML do Teste
+      - name: Publicar relatório HTML do Teste
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          path: my-chrome-extension/playwright-report
+          path: playwright-report  # ajuste se o build gerar em outro lugar
 
       # 8️⃣ Publicar pacote da extensão (ZIP)
       - name: Publicar o pacote da extensão (ZIP)
@@ -64,4 +60,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: extension-zip
-          path: my-chrome-extension/dist/extension.zip
+          path: dist/extension.zip  # ajuste se o build gerar em outro lugar
