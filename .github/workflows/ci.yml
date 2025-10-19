@@ -54,7 +54,7 @@ jobs:
         run: npm run build
 
       # 6️⃣ Testes E2E
-      - name: Teste E2E
+      - name: Run Playwright E2E
         run: xvfb-run -a npm run test:e2e
 
       # 7️⃣ Publicar relatório HTML do Playwright
