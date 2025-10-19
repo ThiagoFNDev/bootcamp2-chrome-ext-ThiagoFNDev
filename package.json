@@ -2,7 +2,6 @@
   "name": "bootcamp2-chrome-ext-thiagofndev",
   "version": "1.5.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "node my-chrome-extension/scripts/build-extensions.mjs",
     "test:e2e": "playwright test --reporter=list, html",
