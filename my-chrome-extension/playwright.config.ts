@@ -4,7 +4,7 @@ import path from "node:path";
 const dist = path.join(__dirname, '..', 'dist');
 
 export default defineConfig({
-    testDir:__dirname,
+    testDir: path.join(__dirname, 'tests'), // <-- aqui
     reporter: [['list'], ['html', { outputFolder: 'playwright-report'}]],
     projects: [
         {
@@ -14,8 +14,8 @@ export default defineConfig({
                 headless: false,
                 launchOptions: {
                     args: [
-                        '--disable-extensions-except=${dist}',
-                        '--load-extension=${dist}'
+                        `--disable-extensions-except=${dist}`,
+                        `--load-extension=${dist}`
                     ]
                 }
             }
