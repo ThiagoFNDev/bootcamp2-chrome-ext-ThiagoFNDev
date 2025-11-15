@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Conversor de Caixa Alta - Extensão para Chrome</title>
+    <link rel="manifest" href="manifest.webmanifest">
+
     <style>
         body { 
             font-family: sans-serif; 
@@ -38,8 +40,6 @@
             border-radius: 5px; 
             margin-top: 1rem; 
         }
-
-        /* Caixa do conselho */
         .advice-box {
             margin-top: 30px;
             padding: 15px;
@@ -63,18 +63,17 @@
         </ul>
         
         <h2>Veja em Ação</h2>
-        <img src="my-chrome-extension/src/assets/demo.gif" alt="Demonstração da extensão convertendo texto">
+        <img src="src/assets/demo.gif" alt="Demonstração da extensão convertendo texto">
         
         <p>Um projeto de código aberto para facilitar o seu dia a dia e demonstrar o poder das extensões do Chrome.</p>
         <a href="https://github.com/ThiagoFNDev/bootcamp2-chrome-ext-ThiagoFNDev" class="cta-button">Ver Código no GitHub</a>
 
-        <!-- 🔥 BLOCO DA API ADICIONADO -->
         <div id="advice" class="advice-box">
             Carregando conselho aleatório...
         </div>
     </div>
 
-    <!-- Script da API -->
+    <!-- Script da API existente -->
     <script>
         async function loadAdvice() {
             try {
@@ -88,6 +87,34 @@
         }
 
         loadAdvice();
+    </script>
+
+    <!-- 🔥 Registro do Service Worker do PWA -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js")
+                .then(() => console.log("PWA service worker registrado com sucesso!"))
+                .catch(err => console.error("Erro ao registrar service worker:", err));
+        }
+    </script>
+
+    <!-- 🔥 Comunicação com a Extensão -->
+    <script>
+        // Enviar mensagem para extensão
+        function pedirDadoDaExtensao() {
+            window.postMessage({
+                source: "PWA",
+                action: "getApiData",
+                payload: { exemplo: true }
+            }, "*");
+        }
+
+        // Receber resposta da extensão
+        window.addEventListener("message", (event) => {
+            if (event.data.source === "EXTENSION") {
+                console.log("Resposta recebida da extensão:", event.data.payload);
+            }
+        });
     </script>
 </body>
 </html>

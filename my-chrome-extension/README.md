@@ -23,3 +23,12 @@ Uma extensão simples para Google Chrome (Manifest V3) que converte qualquer tex
 ## 📂 Estrutura do Projeto
 
 A estrutura segue as boas práticas para desenvolvimento de extensões, separando as responsabilidades de cada componente.
+
+## Grupo Entrega Final
+
+Thiago França Nascimento
+Luis Miguel da Cruz Motta
+João Cesar Ramos Ehrich
+Dania Sadallah Kader
+Henrique Milhorim Alves Mariano
+Otávio Guimarães Neves

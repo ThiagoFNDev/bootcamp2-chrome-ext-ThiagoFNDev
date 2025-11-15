@@ -1,6 +1,6 @@
 {
   "name": "bootcamp2-chrome-ext-thiagofndev",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "",
   "scripts": {
     "playwright:install": "npx playwright install",
